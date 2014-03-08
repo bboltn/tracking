@@ -4,7 +4,7 @@ import numpy as np
 import cv2
 
 #640 x 426
-cap = cv2.VideoCapture('notepad.mov')
+cap = cv2.VideoCapture(0)
 
 # take first frame of the video
 ret,frame = cap.read()
@@ -35,14 +35,13 @@ while(1):
 
         # Draw it on image
         x,y,w,h = track_window
-        img2 = cv2.rectangle(frame, (x,y), (x+w,y+h), 255,2)
-        cv2.imshow('img2',img2)
+
+        cv2.rectangle(frame, (x,y), (x+w,y+h), 255,2)
+        cv2.imshow('frame',frame)
 
         k = cv2.waitKey(60) & 0xff
         if k == 27:
             break
-        else:
-            cv2.imwrite(chr(k)+".jpg",img2)
 
     else:
         break
